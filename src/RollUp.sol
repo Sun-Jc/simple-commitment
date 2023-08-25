@@ -12,5 +12,6 @@ contract RollUp is IRollUp {
     function update(bytes32 oldCommitment, bytes32 newCommitment, bytes calldata) external {
         require(_commitment == bytes32(0) || oldCommitment == _commitment, "RollUp: invalid old commitment");
         _commitment = newCommitment;
+        emit Updated(oldCommitment, newCommitment);
     }
 }
