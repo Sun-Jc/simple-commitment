@@ -9,7 +9,7 @@ contract RollUp is IRollUp {
     function latestCommitment() external view returns (bytes32) {
         return _commitment;
     }
-    function update(bytes32 oldCommitment, bytes32 newCommitment, bytes calldata proof) external {
+    function transfer(bytes32 oldCommitment, bytes32 newCommitment, bytes calldata proof) external {
         require(_commitment == bytes32(0) || oldCommitment == _commitment, "RollUp: invalid old commitment");
         require(verify(proof), "RollUp: invalid proof");
         _commitment = newCommitment;
